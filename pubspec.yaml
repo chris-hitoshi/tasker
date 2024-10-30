@@ -15,6 +15,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   modular_ui: ^0.0.5
   flutter_modular: ^6.3.3
+  gap: ^3.0.1
+  google_fonts: 6.1.0
+  dotted_border: ^2.1.0
 
 dev_dependencies:
   flutter_test:

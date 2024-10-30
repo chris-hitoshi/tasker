@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:tasker/modules/home/home_module.dart';
 
 void main() {
   return runApp(
@@ -16,10 +17,15 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'My Smart App',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      title: 'Tasker',
+      theme: ThemeData(
+        fontFamily: 'Roboto',
+        colorScheme: const ColorScheme.light(
+          background: Colors.white,
+        ),
+      ),
       routerConfig: Modular.routerConfig,
-    ); //added by extension
+    );
   }
 }
 
@@ -29,43 +35,6 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.child('/', child: (context) => const HomePage());
-    r.child('/second',
-        child: (context) => const SecondPage(),
-        transition: TransitionType.fadeIn);
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home Page')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => Modular.to.navigate('/second'),
-          child: const Text('Navigate to Second Page'),
-        ),
-      ),
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Second Page')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => Modular.to.navigate('/'),
-          child: const Text('Back to Home'),
-        ),
-      ),
-    );
+    r.module('/', module: HomeModule());
   }
 }
