@@ -27,9 +27,9 @@ class _TaskItemState extends State<TaskItem> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: context.lightGrey,
+        color: isChecked ? context.backgroundSucess : context.lightGrey,
         border: Border.all(
-          color: context.grey,
+          color: isChecked ? context.success : context.grey,
         ),
         borderRadius: BorderRadius.circular(10),
       ),
@@ -66,24 +66,27 @@ class _TaskItemState extends State<TaskItem> {
                     widget.task.title,
                     style: context.fontStyle.copyWith(
                       fontSize: 14,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
               ),
             ),
-            InkWell(
-              onTap: widget.onEdit,
-              child: const Icon(
-                Icons.edit_note_outlined,
-                color: Colors.black54,
-                size: 25,
-              ),
-            ),
-            Checkbox(
-              value: isChecked,
-              onChanged: (value) {
-                setState(() => isChecked = value!);
-              },
+            Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.edit_note_outlined),
+                  color: Colors.black54,
+                  onPressed: widget.onEdit,
+                ),
+                Checkbox(
+                  activeColor: context.blue,
+                  value: isChecked,
+                  onChanged: (value) {
+                    setState(() => isChecked = value!);
+                  },
+                ),
+              ],
             ),
           ],
         ),

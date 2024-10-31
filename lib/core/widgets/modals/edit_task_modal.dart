@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tasker/core/domain/entities/task_entity.dart';
 import 'package:tasker/core/extensions/context_extensions.dart';
+import 'package:tasker/core/widgets/buttons/modal_cancel_button.dart';
 import 'package:tasker/core/widgets/buttons/modal_date_icon_button.dart';
+import 'package:tasker/core/widgets/buttons/modal_done_button.dart';
 import 'package:tasker/core/widgets/buttons/modal_icon_button.dart';
 
 class EditTaskModal extends StatelessWidget {
@@ -94,7 +96,17 @@ class EditTaskModal extends StatelessWidget {
                       debugPrint('clicou na data');
                     },
                   ),
-                  ModalIconButton.edit(onPressed: () {}),
+                  Row(
+                    children: [
+                      ModalCancelButton(
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                      const Gap(16),
+                      ModalIconButton.edit(onPressed: () {}),
+                      const Gap(16),
+                      ModalDoneButton(onPressed: () {}),
+                    ],
+                  ),
                 ],
               ),
             ],
