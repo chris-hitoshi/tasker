@@ -20,9 +20,7 @@ class AppWidget extends StatelessWidget {
       title: 'Tasker',
       theme: ThemeData(
         fontFamily: 'Roboto',
-        colorScheme: const ColorScheme.light(
-          background: Colors.white,
-        ),
+        colorScheme: const ColorScheme.light(),
       ),
       routerConfig: Modular.routerConfig,
     );
@@ -31,10 +29,10 @@ class AppWidget extends StatelessWidget {
 
 class AppModule extends Module {
   @override
-  void binds(i) {}
+  void binds(Injector i) {}
 
   @override
-  void routes(r) {
+  void routes(RouteManager r) {
     r.module('/', module: HomeModule());
   }
 }

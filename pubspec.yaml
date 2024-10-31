@@ -18,13 +18,14 @@ dependencies:
   gap: ^3.0.1
   google_fonts: 6.1.0
   dotted_border: ^2.1.0
+  very_good_analysis: ^5.1.0
+  equatable: ^2.0.5
+  emoji_picker_flutter: ^2.1.1
+  lucid_validation: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^2.0.0
-  very_good_analysis: ^5.1.0
 
 flutter:
   uses-material-design: true

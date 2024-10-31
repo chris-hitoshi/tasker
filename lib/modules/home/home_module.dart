@@ -7,6 +7,6 @@ class HomeModule extends Module {
 
   @override
   void routes(r) {
-    r.child('/', child: (context) => const HomeView());
+    r.child('/', child: (context) => HomeView());
   }
 }
