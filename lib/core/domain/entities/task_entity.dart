@@ -7,6 +7,7 @@ class TaskEntity extends Equatable {
     required this.title,
     required this.emoji,
     required this.date,
+    required this.isDone,
   });
 
   factory TaskEntity.create({
@@ -14,18 +15,21 @@ class TaskEntity extends Equatable {
     required String description,
     required Emoji emoji,
     required DateTime date,
+    required bool isDone,
   }) =>
       TaskEntity._(
         description: description,
         title: title,
         emoji: emoji,
         date: date,
+        isDone: isDone,
       );
 
   final String title;
   final String description;
   final Emoji emoji;
   final DateTime date;
+  final bool isDone;
 
   @override
   List<Object?> get props => [
@@ -33,5 +37,6 @@ class TaskEntity extends Equatable {
         description,
         emoji,
         date,
+        isDone,
       ];
 }

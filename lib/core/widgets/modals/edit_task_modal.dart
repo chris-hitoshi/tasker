@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:tasker/core/domain/entities/task_entity.dart';
 import 'package:tasker/core/extensions/context_extensions.dart';
 import 'package:tasker/core/widgets/buttons/modal_date_icon_button.dart';
 import 'package:tasker/core/widgets/buttons/modal_icon_button.dart';
 
-class CreateTaskModal extends StatelessWidget {
-  const CreateTaskModal({super.key});
+class EditTaskModal extends StatelessWidget {
+  const EditTaskModal({required this.task, super.key});
+
+  final TaskEntity task;
 
   @override
   Widget build(BuildContext context) {
+    final titleController = TextEditingController(text: task.title);
+    final descriptionController = TextEditingController(text: task.description);
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       backgroundColor: const Color(0xFFFFFFFF),
@@ -58,6 +63,7 @@ class CreateTaskModal extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16,
                                 ),
+                                controller: titleController,
                               ),
                               TextField(
                                 decoration: const InputDecoration(
@@ -69,6 +75,7 @@ class CreateTaskModal extends StatelessWidget {
                                   fontWeight: FontWeight.w300,
                                   fontSize: 14,
                                 ),
+                                controller: descriptionController,
                               ),
                             ],
                           ),
@@ -87,7 +94,7 @@ class CreateTaskModal extends StatelessWidget {
                       debugPrint('clicou na data');
                     },
                   ),
-                  ModalIconButton.add(onPressed: () {}),
+                  ModalIconButton.edit(onPressed: () {}),
                 ],
               ),
             ],

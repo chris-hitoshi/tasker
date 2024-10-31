@@ -4,11 +4,24 @@ import 'package:gap/gap.dart';
 import 'package:tasker/core/domain/entities/task_entity.dart';
 import 'package:tasker/core/extensions/context_extensions.dart';
 
-class TaskItem extends StatelessWidget {
+class TaskItem extends StatefulWidget {
   const TaskItem({required this.task, required this.onEdit, super.key});
 
   final TaskEntity task;
   final VoidCallback onEdit;
+
+  @override
+  State<TaskItem> createState() => _TaskItemState();
+}
+
+class _TaskItemState extends State<TaskItem> {
+  bool isChecked = false;
+
+  @override
+  void initState() {
+    isChecked = widget.task.isDone;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +51,7 @@ class TaskItem extends StatelessWidget {
                       color: context.grey,
                     ),
                     child: EmojiCell(
-                      emoji: task.emoji,
+                      emoji: widget.task.emoji,
                       emojiSize: 25,
                       emojiBoxSize: 25,
                       buttonMode: ButtonMode.MATERIAL,
@@ -50,7 +63,7 @@ class TaskItem extends StatelessWidget {
                   ),
                   const Gap(13),
                   Text(
-                    task.title,
+                    widget.task.title,
                     style: context.fontStyle.copyWith(
                       fontSize: 14,
                     ),
@@ -59,12 +72,18 @@ class TaskItem extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: onEdit,
+              onTap: widget.onEdit,
               child: const Icon(
-                Icons.edit_outlined,
+                Icons.edit_note_outlined,
                 color: Colors.black54,
                 size: 25,
               ),
+            ),
+            Checkbox(
+              value: isChecked,
+              onChanged: (value) {
+                setState(() => isChecked = value!);
+              },
             ),
           ],
         ),

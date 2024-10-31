@@ -4,6 +4,7 @@ import 'package:tasker/core/domain/entities/task_entity.dart';
 import 'package:tasker/core/extensions/context_extensions.dart';
 import 'package:tasker/core/widgets/buttons/new_task_button.dart';
 import 'package:tasker/core/widgets/modals/create_task_modal.dart';
+import 'package:tasker/core/widgets/modals/edit_task_modal.dart';
 import 'package:tasker/core/widgets/task_item.dart';
 import 'package:tasker/mocks/list_tasks.dart';
 
@@ -21,7 +22,7 @@ class HomeView extends StatelessWidget {
           children: [
             NewTaskButton(
               onPressed: () {
-                showDialog(
+                showDialog<Dialog>(
                   context: context,
                   builder: (_) => const CreateTaskModal(),
                 );
@@ -34,12 +35,20 @@ class HomeView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final item = list[index];
                   return TaskItem(
-                    onEdit: () {},
+                    onEdit: () {
+                      showDialog<Dialog>(
+                        context: context,
+                        builder: (_) => EditTaskModal(
+                          task: item,
+                        ),
+                      );
+                    },
                     task: TaskEntity.create(
                       description: item.description,
                       title: item.title,
                       emoji: item.emoji,
                       date: item.date,
+                      isDone: item.isDone,
                     ),
                   );
                 },

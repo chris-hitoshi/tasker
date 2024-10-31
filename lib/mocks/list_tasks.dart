@@ -5,25 +5,29 @@ List<TaskEntity> get listTaskMock => [
       TaskEntity.create(
         title: 'Tarefa de ADM',
         description: 'descrição da tarefa',
-        emoji: const Emoji('emoji', ''),
+        emoji: const Emoji('🚀', ''),
         date: DateTime.now(),
+        isDone: false,
       ),
       TaskEntity.create(
         title: 'Fazer lista de compras',
         description: 'descrição da tarefa',
-        emoji: const Emoji('emoji', ''),
+        emoji: const Emoji('🎯', ''),
         date: DateTime.now(),
+        isDone: true,
       ),
       TaskEntity.create(
         title: 'Dar comida para os cachorros',
         description: 'descrição da tarefa',
-        emoji: const Emoji('emoji', ''),
+        emoji: const Emoji('🎲', ''),
         date: DateTime.now(),
+        isDone: false,
       ),
       TaskEntity.create(
         title: 'Verificar com o Fulano sobre tal coisa',
         description: 'descrição da tarefa',
-        emoji: const Emoji('emoji', ''),
+        emoji: const Emoji('🤯', ''),
         date: DateTime.now(),
+        isDone: false,
       ),
     ];
