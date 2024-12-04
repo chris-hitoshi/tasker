@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tasker/core/domain/entities/task_entity.dart';
-import 'package:tasker/core/extensions/context_extensions.dart';
 import 'package:tasker/core/widgets/buttons/new_task_button.dart';
 import 'package:tasker/core/widgets/modals/create_task_modal.dart';
 import 'package:tasker/core/widgets/modals/edit_task_modal.dart';
@@ -29,32 +28,24 @@ class HomeView extends StatelessWidget {
               },
             ),
             const Gap(50),
-            SizedBox(
-              height: context.height * 0.5,
-              child: ListView.separated(
-                itemBuilder: (context, index) {
-                  final item = list[index];
-                  return TaskItem(
-                    onEdit: () {
-                      showDialog<Dialog>(
-                        context: context,
-                        builder: (_) => EditTaskModal(
-                          task: item,
-                        ),
-                      );
-                    },
-                    task: TaskEntity.create(
-                      description: item.description,
-                      title: item.title,
-                      emoji: item.emoji,
-                      date: item.date,
-                      isDone: item.isDone,
-                    ),
-                  );
-                },
-                itemCount: list.length,
-                separatorBuilder: (context, index) => const Gap(10),
-              ),
+            ListView.separated(
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                final item = list[index];
+                return TaskItem(
+                  onEdit: () {
+                    showDialog<Dialog>(
+                      context: context,
+                      builder: (_) => EditTaskModal(
+                        task: item,
+                      ),
+                    );
+                  },
+                  task: item,
+                );
+              },
+              itemCount: list.length,
+              separatorBuilder: (context, index) => const Gap(10),
             ),
           ],
         ),

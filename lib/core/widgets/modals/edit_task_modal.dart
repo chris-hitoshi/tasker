@@ -104,7 +104,9 @@ class EditTaskModal extends StatelessWidget {
                       const Gap(16),
                       ModalIconButton.edit(onPressed: () {}),
                       const Gap(16),
-                      ModalDoneButton(onPressed: () {}),
+                      ModalDoneButton(
+                        onPressed: () {},
+                      ),
                     ],
                   ),
                 ],

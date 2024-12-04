@@ -11,14 +11,17 @@ class ModalIconButton extends StatelessWidget {
   factory ModalIconButton.add({required VoidCallback onPressed}) =>
       ModalIconButton._(
         label: 'Adicionar',
-        icon: const Icon(Icons.add_rounded),
+        icon: const Icon(
+          Icons.add_rounded,
+          size: 20,
+        ),
         onPressed: onPressed,
       );
 
   factory ModalIconButton.edit({required VoidCallback onPressed}) =>
       ModalIconButton._(
         label: 'Editar',
-        icon: const Icon(Icons.edit_outlined),
+        icon: const Icon(Icons.edit_outlined, size: 20),
         onPressed: onPressed,
       );
 

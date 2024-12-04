@@ -25,7 +25,8 @@ class _TaskItemState extends State<TaskItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
       decoration: BoxDecoration(
         color: isChecked ? context.backgroundSucess : context.lightGrey,
         border: Border.all(
